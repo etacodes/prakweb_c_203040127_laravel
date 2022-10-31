@@ -20,7 +20,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view ('home', [
-        "title" => "Home"
+        "title" => "Home",
+        'active' => 'home',
     ]);
 });
 
@@ -29,16 +30,19 @@ Route::get('/about', function () {
         "title" => "About",
         "name" => "Ericko Timur Apandi",
         "email" => "erickotimur2002@gmail.com",
-        "image" => "riko.jpg"
+        "image" => "riko.jpg",
+        'active' => 'about',
     ]);
 });
 
 
 Route::get('/blog', [PostController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+
 Route::get('/categories', function() {
     return view('categories', [
         'title' => 'Post Categories',
+        'active' => 'categories',
         'categories' => Category::all()
 
     ]);
